@@ -9,8 +9,9 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-
+  
   job-1:
+    name: job1
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +21,7 @@ jobs:
           dt=$(date)
           echo $dt
   job-2:
+    name: job2
     runs-on: windows-latest
     
     steps:
@@ -28,6 +30,7 @@ jobs:
         run: Get-Date
         
   job-3:
+    name: job3
     runs-on: macos-latest
     
     steps:
@@ -39,6 +42,7 @@ jobs:
   job-4:
     runs-on: windows-latest
     needs: [job-1, job-2, job-3]
+    name: job4
     steps:
       - uses: actions/checkout@v3
       - name: Show date on windows when all jobs done
